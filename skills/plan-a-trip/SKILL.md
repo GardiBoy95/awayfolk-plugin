@@ -1,6 +1,6 @@
 ---
 name: plan-a-trip
-description: Plan a trip in Awayfolk with the user. Use when they talk about an upcoming trip, want ideas for a place, ask what to do on a day, want to fill in the plan, packing or budget, or mention Awayfolk.
+description: Plan a trip in Awayfolk with the user. Use when they talk about an upcoming trip, want ideas for a place, ask what to do on a day, want to fill in the plan, packing or budget, share a booking confirmation or a link for a trip, or mention Awayfolk.
 ---
 
 # Plan a trip in Awayfolk
@@ -19,7 +19,7 @@ Awayfolk holds the people, places, plans and memories of a trip. The travellers 
 - Ask what they like before suggesting. Use the travel profile's interests and pace.
 - Suggest a handful of ideas with real sources, and let them choose. Save only what they pick, with `save_record` and kind `idea`.
 - Fill `place`, a short `notes` on why it suits them, a `category`, and a `url` you have checked. Add `location` only with verified coordinates, never guessed ones.
-- An idea is not a booking. Never book anything, and never mark something confirmed or paid unless the user says it is.
+- An idea is not a booking. Never book anything, and never mark something confirmed or paid unless the user says it is or shares the confirmation.
 
 ## Links people share
 
@@ -27,6 +27,25 @@ Awayfolk holds the people, places, plans and memories of a trip. The travellers 
 - Prefer an event's or venue's own website to Instagram. Instagram cannot be read; if that is all there is, save it anyway, and tell the user they can add a screenshot as the photo in Awayfolk.
 - If the page has a date on the trip, the idea goes on that day as a suggestion by itself. Pass `day` only when the user has said which day.
 - Afterwards, say in a sentence what was saved and where: *Anyma at Zamna is in the idea bank, suggested for Monday 4 January, with the poster.*
+
+## Bookings they have made
+
+A booking confirmation the user shares, pasted, forwarded, as a PDF or a screenshot, is the user telling you it is booked. Save it with `save_record`, kind `booking` and `bookingStatus: "confirmed"`, without asking first. If it is unclear which trip it belongs to, ask.
+
+- Read the trip first. If a card already has the same reference, or the same flight number on the same day, update that card instead of adding another. A cancellation sets `bookingStatus: "cancelled"` on the existing card.
+- **Flights: one card per leg**, including each leg of a connection and the way home. For each leg:
+  - `bookingType: "flight"`, and `title` as the route in words: *Oslo → Newark*.
+  - `day` and `time` for the local departure, `endDay` and `endTime` for the local arrival.
+  - `startTimezone` and `endTimezone`: the IANA time zone of each airport, such as `Europe/Oslo` and `America/New_York`. Times on a ticket are local to each airport; never convert them.
+  - `place` and `arrivalPlace`: the airport codes, such as `OSL` and `EWR`.
+  - `flightNumber`, `provider` (the airline) and `reference` (the booking reference, the same on every leg).
+  - `checkInHours` only when the confirmation says how many hours before departure check-in opens.
+- **Stays:** `bookingType: "stay"`, `day` and `time` for check-in, `endDay` and `endTime` for check-out, `provider` for the hotel's name, `place` for its street address and `reference` for the confirmation number.
+- Trains, ferries, car hire, tickets and tables: `bookingType` `transport`, `event` or `restaurant`, with the same fields where they fit.
+- **Price:** add what the confirmation says was paid as `cost` with `state: "paid"` and `basis: "total"`. Use `"unpaid"` when it is paid later, at the hotel for instance. When several flight legs share one ticket, put the price on the first leg only, so it is counted once.
+- Every card's dates must fall within the trip. A flight home often lands the day after the trip ends. Then ask whether to extend the trip with `update_trip`, and save the leg afterwards. Never drop the arrival to make it fit.
+- Everyone on the trip sees the booking, so save only what the trip needs. Leave out passport and ID numbers, dates of birth, ticket and loyalty numbers, payment details and contact details.
+- Afterwards, say what was saved: *Your flights and the hotel are in Bookings: New Orleans → Cancún on 26 December, home on 10 January, and Casa Malca for nine nights.*
 
 ## Putting ideas on days
 
