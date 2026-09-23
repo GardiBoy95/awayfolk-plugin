@@ -21,6 +21,13 @@ Awayfolk holds the people, places, plans and memories of a trip. The travellers 
 - Fill `place`, a short `notes` on why it suits them, a `category`, and a `url` you have checked. Add `location` only with verified coordinates, never guessed ones.
 - An idea is not a booking. Never book anything, and never mark something confirmed or paid unless the user says it is.
 
+## Links people share
+
+- When someone shares a link for the trip, save it with `save_link`: an event, a restaurant, a place, a Google Maps place, an article. Awayfolk reads the page for its title, picture, place and date, so do not retype them with `save_record`.
+- Prefer an event's or venue's own website to Instagram. Instagram cannot be read; if that is all there is, save it anyway, and tell the user they can add a screenshot as the photo in Awayfolk.
+- If the page has a date on the trip, the idea goes on that day as a suggestion by itself. Pass `day` only when the user has said which day.
+- Afterwards, say in a sentence what was saved and where: *Anyma at Zamna is in the idea bank, suggested for Monday 4 January, with the poster.*
+
 ## Putting ideas on days
 
 - To suggest an idea for a particular day, save it with `day` (YYYY-MM-DD, inside the trip) and keep `data.status` as `idea`. It then shows on that day as a suggestion, and the travellers confirm it in the app with one tap.
