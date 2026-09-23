@@ -1,7 +1,7 @@
 {
   "name": "awayfolk",
   "displayName": "Awayfolk",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Make more of going away. Claude reads and updates the trips you share from Awayfolk: ideas, days, bookings, packing and what it all costs.",
   "author": {
     "name": "Gard Halvorsen",
