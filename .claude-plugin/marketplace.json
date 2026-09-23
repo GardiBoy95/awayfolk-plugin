@@ -1,0 +1,17 @@
+{
+  "name": "awayfolk",
+  "owner": {
+    "name": "Gard Halvorsen"
+  },
+  "description": "Awayfolk for Claude: the people, places, plans and memories of a trip, in the conversation.",
+  "plugins": [
+    {
+      "name": "awayfolk",
+      "displayName": "Awayfolk",
+      "source": "./",
+      "description": "Plan the trips you share from Awayfolk with Claude: ideas, days, bookings, packing and estimated costs.",
+      "homepage": "https://awayfolk.app",
+      "category": "travel"
+    }
+  ]
+}
