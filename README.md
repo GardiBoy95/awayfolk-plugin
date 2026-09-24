@@ -1,13 +1,15 @@
-# Awayfolk for Claude
+# Awayfolk: a shared trip planner for Claude and ChatGPT
 
-**Make more of going away.** Awayfolk brings the people, places, plans and memories of a trip together. This plugin lets Claude read and update the trips you share from [Awayfolk](https://awayfolk.app).
+**Make more of going away.** Awayfolk is a shared trip planner with a remote MCP server at `https://awayfolk.app/mcp`. Connect it to Claude or ChatGPT and plan in the conversation: your AI saves ideas from links, suggests them for days, files flights and hotels from booking confirmations, keeps the packing list and adds price estimates. Everything lands in one trip on [awayfolk.app](https://awayfolk.app) that up to six travellers share on their phones, before and during the trip.
 
-You can ask Claude to:
+This repository is the Claude plugin. You can ask Claude to:
 
 - find ideas that suit you, and save the ones you pick to the trip's ideas list;
 - suggest ideas for particular days, which you then confirm in the app with one tap;
 - add what things typically cost, clearly marked as estimates;
-- keep packing, bookings and checklists up to date.
+- keep packing, bookings and checklists up to date;
+- save a flight or hotel confirmation you paste as a booking;
+- give you an invite link for your travel party.
 
 Everything Claude saves shows up for the whole travel party on awayfolk.app.
 
@@ -23,6 +25,10 @@ Everything Claude saves shows up for the whole travel party on awayfolk.app.
 ```
 
 The first time Claude uses Awayfolk, you sign in with the Google account you use on awayfolk.app and approve access. You can also connect without the plugin: [awayfolk.app/ai](https://awayfolk.app/ai) has a *Connect Claude* button.
+
+**ChatGPT:** in Settings → Apps → Advanced settings, turn on Developer mode, create an app with the URL `https://awayfolk.app/mcp` and sign in with Google. A one-click listing in ChatGPT's app directory is on its way.
+
+**Other MCP clients:** add `https://awayfolk.app/mcp` as a remote server (streamable HTTP, OAuth 2.1 with dynamic client registration). Awayfolk is listed in the [Official MCP Registry](https://registry.modelcontextprotocol.io/v0.1/servers?search=app.awayfolk/awayfolk) as `app.awayfolk/awayfolk`.
 
 ## What the plugin contains
 
