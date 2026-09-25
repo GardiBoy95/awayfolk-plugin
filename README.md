@@ -9,6 +9,8 @@ This repository is the Claude plugin. You can ask Claude to:
 - add what things typically cost, clearly marked as estimates;
 - keep packing, bookings and checklists up to date;
 - save a flight or hotel confirmation you paste as a booking;
+- tell you what the others have changed, and undo a change of yours;
+- plan a blåtur, a surprise trip, without giving it away;
 - give you an invite link for your travel party.
 
 Everything Claude saves shows up for the whole travel party on awayfolk.app.
