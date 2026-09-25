@@ -35,6 +35,17 @@ The first time Claude uses Awayfolk, you sign in with the Google account you use
 - A connection to the Awayfolk MCP server at `https://awayfolk.app/mcp`. Sign-in is OAuth through Awayfolk's sign-in page.
 - The **plan-a-trip** skill, which teaches Claude how to work with a trip: read it first, suggest rather than book, confirm before anything is marked paid or planned, and leave room for spontaneity.
 
+## Development
+
+Check the manifest and run the skill's evals with Claude Code:
+
+```
+claude plugin validate .
+claude plugin eval . --runs 1 --ablation none
+```
+
+The evals in `evals/` answer every Awayfolk call from a mock, so no real trip is touched. `evals/mocks/awayfolk/_tools.json` is a copy of the server's tool list: when the server changes, update it together with the skill. CI runs both on pull requests; the evals need an `ANTHROPIC_API_KEY` secret.
+
 ## Privacy
 
 The plugin collects nothing itself. When Claude uses Awayfolk, its requests go to `awayfolk.app` over HTTPS, and Awayfolk stores the trips, cards and travellers you create there. Claude can only reach the trips you have shared with it. You can take access back at any time under AI on awayfolk.app. What Awayfolk collects, how long it keeps it and who processes it is in the [privacy policy](https://awayfolk.app/privacy).

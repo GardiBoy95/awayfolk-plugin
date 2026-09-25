@@ -1,0 +1,6 @@
+---
+expect:
+  tripId: string
+---
+
+{"trip":{"id":"trip_lisboa","owner_id":"mem_ola","title":"Lisboa i mai","destination":"Lisboa","start_date":"2027-05-12","end_date":"2027-05-16","timezone":"Europe/Lisbon","profile":{"interests":"Mat, vin og gamle bydeler. Rolige morgener.","pace":"balansert","budget":0,"currency":"NOK","partySize":2,"modules":["ideas","plan","map","today","packing","bookings","money","memories"]},"revision":42,"role":"owner","theme":{"accent":"#2F5E8C"}},"records":[{"id":"rec_timeout","kind":"idea","title":"Time Out Market","day":"","data":{"notes":"Matmarked med mange boder, fint en regnværsdag.","url":"https://www.timeoutmarket.com/lisboa/","status":"idea","category":"restaurant"},"revision":3},{"id":"rec_tram","kind":"idea","title":"Trikk 28 gjennom Alfama","day":"2027-05-15","data":{"notes":"Tidlig om morgenen før køene.","status":"planned","time":"09:00","category":"activity","startTimezone":"Europe/Lisbon"},"revision":5},{"id":"rec_sunscreen","kind":"packing","title":"Solkrem","day":"","data":{"category":"Felles","visibility":"shared","status":"idea"},"revision":1}],"members":[{"id":"mem_ola","name":"Ola Nordmann","role":"owner"},{"id":"mem_kari","name":"Kari Nordmann","role":"member"}]}

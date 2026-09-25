@@ -1,0 +1,1 @@
+{"id":"{{input.id}}","title":"Lisboa i mai","text":"Lisboa i mai\nLisboa · 2027-05-12 – 2027-05-16\nUse get_trip for the cards and the current revision.","url":"https://awayfolk.app/trip/trip_lisboa"}
