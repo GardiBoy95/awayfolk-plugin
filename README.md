@@ -9,6 +9,8 @@ This repository contains the Awayfolk plugin for Claude and OpenAI-compatible ho
 - add what things typically cost, clearly marked as estimates;
 - keep packing, bookings and checklists up to date;
 - save a flight or hotel confirmation you paste as a booking;
+- tell you what the others have changed, and undo a change of yours;
+- plan a blåtur, a surprise trip, without giving it away;
 - give you an invite link for your travel party.
 
 Shared changes appear for the whole travel party on awayfolk.app. Personal packing stays personal.
@@ -42,6 +44,17 @@ The first time Claude uses Awayfolk, you sign in with the Google account you use
 - Interactive trip cards in hosts that support MCP Apps: select proposals, save them together, put an idea on a day, and Undo. Other hosts receive the same trip and receipts as text.
 
 Start from a trip's AI button to carry its exact identity into the conversation. Your AI reads the latest trip before editing it. Writes include a receipt, and retrying the same operation does not create duplicate cards.
+
+## Development
+
+Check the manifest and run the skill's evals with Claude Code:
+
+```
+claude plugin validate .
+claude plugin eval . --runs 1 --ablation none
+```
+
+The evals in `evals/` answer every Awayfolk call from a mock, so no real trip is touched. `evals/mocks/awayfolk/_tools.json` is a copy of the server's tool list: when the server changes, update it together with the skill. CI runs both on pull requests; the evals need an `ANTHROPIC_API_KEY` secret.
 
 ## Privacy
 
