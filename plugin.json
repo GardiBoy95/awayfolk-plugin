@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "awayfolk",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Plan together in Awayfolk: ideas, days, bookings and packing, with interactive trip cards in your AI conversation.",
   "author": {
     "name": "Gard Halvorsen",
