@@ -1,5 +1,4 @@
 ---
 type: tool_used
-tool: mcp__plugin_awayfolk_awayfolk__save_record
-input_match: "kind.{0,6}packing"
+tool: mcp__plugin_awayfolk_awayfolk__add_packing_items
 ---
