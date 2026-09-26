@@ -1,0 +1,48 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "awayfolk",
+  "version": "0.2.0",
+  "description": "Plan together in Awayfolk: ideas, days, bookings and packing, with interactive trip cards in your AI conversation.",
+  "author": {
+    "name": "Gard Halvorsen",
+    "url": "https://awayfolk.app"
+  },
+  "homepage": "https://awayfolk.app",
+  "repository": "https://github.com/GardiBoy95/awayfolk-plugin",
+  "license": "MIT",
+  "keywords": [
+    "travel",
+    "trips",
+    "itinerary",
+    "planning",
+    "packing",
+    "mcp"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Awayfolk",
+        "shortDescription": "Your shared trip, in the conversation",
+        "longDescription": "Plan trips together, compare ideas, save booking confirmations and keep packing lists up to date. Use interactive trip cards where supported. Your travel party sees the same saved plan on Awayfolk.",
+        "developerName": "Gard Halvorsen",
+        "category": "Productivity",
+        "capabilities": [
+          "Read",
+          "Write",
+          "Interactive"
+        ],
+        "websiteURL": "https://awayfolk.app",
+        "privacyPolicyURL": "https://awayfolk.app/privacy",
+        "termsOfServiceURL": "https://awayfolk.app/terms",
+        "defaultPrompt": [
+          "Show my Awayfolk trip and help plan a day.",
+          "Save these booking confirmations to my trip.",
+          "Help me pack for my upcoming Awayfolk trip."
+        ],
+        "brandColor": "#C8BBF3",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      }
+    }
+  }
+}
