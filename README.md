@@ -1,21 +1,26 @@
 # Awayfolk: a shared trip planner for Claude and ChatGPT
 
-**Make more of going away.** Awayfolk is a shared trip planner with a remote MCP server at `https://awayfolk.app/mcp`. Connect it to Claude or ChatGPT and plan in the conversation: your AI saves ideas from links, suggests them for days, files flights and hotels from booking confirmations, keeps the packing list and adds price estimates. Everything lands in one trip on [awayfolk.app](https://awayfolk.app) that up to six travellers share on their phones, before and during the trip.
+**Make more of going away.** Awayfolk is a shared trip planner with a remote MCP server at `https://awayfolk.app/mcp`. Connect it to Claude or ChatGPT and plan in the conversation: your AI saves ideas from links, suggests them for days, files flights and hotels from booking confirmations, keeps the packing list and adds price estimates. Everything lands in one trip on [awayfolk.app](https://awayfolk.app) that the whole group shares on their phones, before and during the trip.
 
 This repository contains the Awayfolk plugin for Claude and OpenAI-compatible hosts. You can ask your AI to:
 
 - find ideas that suit you, and save the ones you pick to the trip's ideas list;
+- compare destinations and dates in separate polls; people answer and the trip owner confirms in Awayfolk;
 - suggest ideas for particular days, which you then confirm in the app with one tap;
-- add what things typically cost, clearly marked as estimates;
+- save researched or user-provided prices, clearly marked as estimates;
 - keep packing, bookings and checklists up to date;
 - save a flight or hotel confirmation you paste as a booking;
-- give you an invite link for your travel party.
+- give you an invite link for the people on your trip.
 
-Shared changes appear for the whole travel party on awayfolk.app. Personal packing stays personal.
+Shared changes appear for everyone on the trip on awayfolk.app. Personal packing stays personal. Saving estimates from the conversation is free; Awayfolk's built-in price calculation requires Trip Pass.
 
 ## Install
 
-**Claude (web and desktop):** go to Customize → Plugins → Add marketplace, enter `GardiBoy95/awayfolk-plugin`, and install **Awayfolk**.
+**Directory status, 30 September 2026:** the OpenAI public plugin and Claude connector are in review and not published. The setup routes below remain available while their public listings are pending.
+
+**Claude (web and desktop):** go to Customize → Plugins → Add → Add marketplace and enter `GardiBoy95/awayfolk-plugin`. Open that marketplace and install **Awayfolk**. In the installed plugin's **Connectors** tab, use **Add** or **Connect** for Awayfolk and complete sign-in. Adding the marketplace, installing the plugin and approving its connection are separate steps; the slash commands below are for Claude Code.
+
+To connect without the bundled skills, start at [awayfolk.app/ai](https://awayfolk.app/ai) and choose **Connect Claude**. If manual setup is needed, use Customize → Connectors → + → Add custom connector, with the name **Awayfolk** and address `https://awayfolk.app/mcp`.
 
 **Claude Code:**
 
@@ -24,9 +29,9 @@ Shared changes appear for the whole travel party on awayfolk.app. Personal packi
 /plugin install awayfolk@awayfolk
 ```
 
-The first time Claude uses Awayfolk, you sign in with the Google account you use on awayfolk.app and approve access. You can also connect without the plugin: [awayfolk.app/ai](https://awayfolk.app/ai) has a *Connect Claude* button.
+Complete Awayfolk authentication when Claude Code prompts you. In either Claude setup, use the same Google account as on awayfolk.app and approve the connection. Ask it to show your trip to verify that the connection works.
 
-**ChatGPT:** start at [awayfolk.app/ai](https://awayfolk.app/ai) and choose ChatGPT. If Awayfolk is not already connected, enable Developer mode in Settings → Security and login, open [Plugins](https://chatgpt.com/plugins), and add `https://awayfolk.app/mcp` with OAuth. Sign in with the same Google account. A public directory listing is not yet available.
+**ChatGPT:** start at [awayfolk.app/ai](https://awayfolk.app/ai) and choose ChatGPT. Until the public listing is available, setup requires Developer mode on the web: enable it in Settings → Security and login, open [Plugins](https://chatgpt.com/plugins), and add `https://awayfolk.app/mcp` with OAuth. Sign in with the same Google account. Select Awayfolk from **+** in the conversation, paste the starter message from Awayfolk and ask it to show your trip.
 
 **Codex and compatible plugin hosts:** install this repository as a plugin using your host's plugin installer. The portable `plugin.json` and `mcp.json` describe the same remote connection; `.codex-plugin/plugin.json` supplies compatibility metadata. Authenticate Awayfolk when the host prompts you.
 

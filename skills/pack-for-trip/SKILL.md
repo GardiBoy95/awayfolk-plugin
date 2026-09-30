@@ -9,7 +9,7 @@ Find the trip the user names, or use the exact trip ID from their Awayfolk link.
 
 ## Packing
 
-- Read the packing list in `get_trip` first, then suggest only what is missing. Base it on the trip: nights, weather, plans and bookings.
+- Read the packing list in `get_trip` first, then suggest only what is missing. Base it on known trip details and optional styles: actual nights, sourced weather, chosen itinerary and bookings. Styles and unaccepted Ideas are preferences, not confirmed activities. If dates are missing, ask only when a season or duration is needed; a pasted packing list can be saved without dates. Never infer a season or number of nights from missing dates.
 - On a mystery trip, follow `trip.mystery.planner` and never infer hidden plans for a traveller. For a planner, keep items that reveal a surprise on their personal list and use safe, generic wording for shared items. Packing cards do not support `data.secret`; never send that field or expose secret booking or activity details in shared packing notes.
 - Add everything the user accepts in one `add_packing_items` call, up to 100 things.
   - The user's own things are personal, and only they see them.

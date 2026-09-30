@@ -1,0 +1,11 @@
+interface:
+  display_name: "Your trip today"
+  short_description: "Read today's plans, bookings and changes"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "awayfolk"
+      description: "Awayfolk trip planning MCP server"
+      transport: "streamable_http"
+      url: "https://awayfolk.app/mcp"
