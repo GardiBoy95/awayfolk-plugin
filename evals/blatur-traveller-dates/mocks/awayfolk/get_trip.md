@@ -1,0 +1,6 @@
+---
+expect:
+  tripId: string
+---
+
+{"trip":{"id":"trip_blatur","owner_id":"mem_ola","title":"Blåtur ❄️","destination":"","start_date":"2027-02-12","end_date":"2027-02-14","timezone":"Europe/Oslo","profile":{"interests":"","pace":"balansert","budget":0,"currency":"NOK","partySize":2,"modules":["ideas","plan","map","packing"]},"revision":30,"role":"member","mystery":{"planner":false,"destinationHidden":true,"revealAt":1802386800000,"clues":[{"id":"clue_1","text":"Pakk ullundertøy og gode sko."},{"id":"clue_2","text":"Det blir kaldere enn i Oslo."}],"nextClueAt":null,"cluesLeft":1,"surprises":1},"theme":{"accent":"#14261E"}},"records":[{"id":"rec_7f3a","kind":"idea","title":"","day":"2027-02-13","data":{"sealed":true,"secret":{"teaser":"Ta på deg varmt og sporty tøy.","reveal":"start"},"time":"10:00"},"revision":4},{"id":"rec_2c91","kind":"idea","title":"Middag på hytta","day":"2027-02-13","data":{"notes":"Gryte og rødvin etter turen.","status":"planned","time":"19:00","category":"cooking","startTimezone":"Europe/Oslo"},"revision":3},{"id":"rec_d4e0","kind":"packing","title":"Brød og pålegg","day":"","data":{"category":"Handleliste","bag":"Mat og drikke","visibility":"shared","status":"idea"},"revision":1}],"members":[{"id":"mem_ola","name":"Ola Nordmann","role":"owner"},{"id":"mem_kari","name":"Kari Nordmann","role":"member"}]}
