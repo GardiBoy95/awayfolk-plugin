@@ -1,0 +1,11 @@
+interface:
+  display_name: "Pack for a trip"
+  short_description: "Update personal and shared packing lists"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "awayfolk"
+      description: "Awayfolk trip planning MCP server"
+      transport: "streamable_http"
+      url: "https://awayfolk.app/mcp"

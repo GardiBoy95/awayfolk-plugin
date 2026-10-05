@@ -1,0 +1,11 @@
+interface:
+  display_name: "Save bookings"
+  short_description: "Save confirmations to your Awayfolk trip"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "awayfolk"
+      description: "Awayfolk trip planning MCP server"
+      transport: "streamable_http"
+      url: "https://awayfolk.app/mcp"
