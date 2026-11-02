@@ -1,7 +1,7 @@
 ---
 type: tool_used
 tool: mcp__plugin_awayfolk_awayfolk__save_record
-input_match: "bookingStatus.{0,6}(confirmed|reserved)"
+input_match: '"bookingStatus.{0,6}(confirmed|reserved)"'
 min: 0
 max: 0
 arm: both

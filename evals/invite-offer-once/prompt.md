@@ -5,4 +5,4 @@ max_turns: 12
 allowed_tools: [Skill, "mcp__plugin_awayfolk_awayfolk__*"]
 ---
 
-Lagre disse tre idéene i Lisboa-turen: Time Out Market, Miradouro da Senhora do Monte og LX Factory.
+Lagre disse tre idéene i Lisboa-turen: Miradouro da Senhora do Monte, LX Factory og Oceanário de Lisboa.

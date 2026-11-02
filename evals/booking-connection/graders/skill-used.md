@@ -1,5 +1,5 @@
 ---
 type: tool_used
 tool: Skill
-input_match: "save-bookings"
+input_match: '"save-bookings"'
 ---
