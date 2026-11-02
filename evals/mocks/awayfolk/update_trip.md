@@ -1,10 +1,6 @@
 ---
 expect:
   tripId: string
-  title: string
-  destination: string
-  startDate: string
-  endDate: string
   expectedRevision: number
   idempotencyKey: string
 ---
