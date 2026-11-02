@@ -13,7 +13,7 @@ Find the trip the user names, or use the exact trip ID from their Awayfolk link.
 - On a mystery trip, follow `trip.mystery.planner` and never infer hidden plans for a traveller. For a planner, keep items that reveal a surprise on their personal list and use safe, generic wording for shared items. Packing cards do not support `data.secret`; never send that field or expose secret booking or activity details in shared packing notes.
 - Add everything the user accepts in one `add_packing_items` call, up to 100 things.
   - The user's own things are personal, and only they see them.
-  - Things the whole group needs once, such as a first-aid kit, go in a separate call with `shared: true`.
+  - Things the whole group needs once, such as a first-aid kit, go in a separate call with `shared: true`. A thing cannot move between the personal and the shared list later, so choose when you add it.
 - Tick things off with `set_packed` only when the user says they have packed or bought them. Never tick ahead.
 
 

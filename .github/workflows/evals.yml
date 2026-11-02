@@ -1,0 +1,56 @@
+name: Evals
+
+on:
+  pull_request:
+    paths:
+      - "skills/**"
+      - "evals/**"
+      - ".claude-plugin/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      EVAL_MODEL: claude-sonnet-5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install -g @anthropic-ai/claude-code
+      - name: Run the evals against the Awayfolk mocks
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::notice::The evals were skipped: add an ANTHROPIC_API_KEY secret to run them."
+            exit 0
+          fi
+          claude plugin eval . --trust-plugin --no-publish --ablation none \
+            --runs 3 -j 4 --model "$EVAL_MODEL" --threshold 0.66 --max-cost-usd 10 \
+            --json eval-results.json --report eval-report.html
+      - name: Summary
+        if: always()
+        run: |
+          [ -f eval-results.json ] || exit 0
+          python3 - >> "$GITHUB_STEP_SUMMARY" <<'PY'
+          import json
+          d = json.load(open("eval-results.json"))
+          print("| Case | Score |")
+          print("| --- | --- |")
+          for c in d["cases"]:
+              print(f"| {c['name']} | {c['aggregates']['score']:.2f} |")
+          print(f"\nCost: ${d.get('costUsd', 0):.2f}")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eval-results
+          path: |
+            eval-results.json
+            eval-report.html
+          if-no-files-found: ignore

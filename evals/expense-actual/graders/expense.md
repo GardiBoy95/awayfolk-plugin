@@ -1,0 +1,6 @@
+---
+type: tool_used
+tool: mcp__plugin_awayfolk_awayfolk__save_record
+input_match: '"kind"\s*:\s*"expense"'
+min: 1
+---

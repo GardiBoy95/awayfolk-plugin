@@ -1,6 +1,6 @@
 ---
 name: save-bookings
-description: Save or update flight, hotel, transport and ticket confirmations in the right Awayfolk trip when the user shares a confirmation, PDF or screenshot.
+description: Save or update flight, hotel, transport, activity and ticket confirmations in the right Awayfolk trip when the user shares a confirmation, PDF or screenshot.
 ---
 
 # Save bookings in Awayfolk
@@ -11,20 +11,22 @@ Find the trip the user names, or use the exact trip ID from their Awayfolk link.
 
 A booking confirmation the user shares, pasted, forwarded, as a PDF or a screenshot, is the user telling you it is booked. Save it with `save_record`, kind `booking` and `bookingStatus: "confirmed"`, without asking first. If it is unclear which trip it belongs to, ask.
 
+- **A booking for something already on the trip:** when the confirmation is for an idea or activity the user identifies (*we booked the cooking class*), record it on that card with `save_reservation` when its `canReserve` allows, instead of adding a second card. Send `status` (`confirmed`, `reserved`, or `cancelled` for a cancellation already made with the supplier), `provider`, `reference`, and a public `url` only. Set `arrangedBy` only when the user says who arranged it, and `confirmSchedule: true` only when they confirm it matches the card's title, place and time. Never try to set `reservation` through `save_record`.
 - On a mystery trip, follow `trip.mystery.planner`. A traveller's sealed cards stay secret; never infer their details. For a planner's surprise booking, include `data.secret` with a safe teaser and the chosen reveal mode on the first `save_record`. Flights and stays have secret defaults while the destination is hidden; other bookings do not. Preserve an existing secret and never send `data.secret: null` unless the planner asks to reveal it.
 - Read the trip first. Match an existing flight by its leg: flight number and local departure date, or booking reference together with route and local departure date. A reference alone is not a match: several legs share it. For other bookings, match the reference together with provider, booking type and dates. Update only that matching card; otherwise add one. A cancellation sets `bookingStatus: "cancelled"` on the affected existing cards, preserving unaffected legs.
-- **Flights: one card per leg**, including each leg of a connection and the way home. For each leg:
+- **Flights: one card per leg**, including each leg of a connection and the way home. A connection is two legs even when the confirmation shows it as one line, such as *Oslo to New Orleans*. For each leg:
   - `bookingType: "flight"`, and `title` as the route in words: *Oslo → Newark*.
-  - `day` and `time` for the local departure, `endDay` and `endTime` for the local arrival.
+  - `day` and `time` for the local departure, `endDay` and `endTime` for the local arrival. If the confirmation gives a leg's arrival but not its departure, leave both times out and put the arrival in `notes`: Awayfolk needs a start time before an end time. Never guess a time.
   - `startTimezone` and `endTimezone`: the IANA time zone of each airport, such as `Europe/Oslo` and `America/New_York`. Times on a ticket are local to each airport; never convert them.
-  - `place` and `arrivalPlace`: the airport codes, such as `OSL` and `EWR`.
+  - `place` and `arrivalPlace`: just the airport codes, such as `OSL` and `EWR`.
   - `flightNumber`, `provider` (the airline) and `reference` (the booking reference, the same on every leg).
   - `checkInHours` only when the confirmation says how many hours before departure check-in opens.
-- **Stays:** `bookingType: "stay"`, `day` and `time` for check-in, `endDay` and `endTime` for check-out, `provider` for the hotel's name, `place` for its street address and `reference` for the confirmation number.
+- **Stays:** `bookingType: "stay"`, `day` and `time` for check-in, `endDay` and `endTime` for check-out, `provider` for the hotel's own name (not the booking site: put *Booked via Booking.com* in `notes`), `place` for its street address and `reference` for the confirmation number.
 - Trains, ferries, car hire, tickets and tables: `bookingType` `transport`, `event` or `restaurant`, with the same fields where they fit.
 - **Price:** add what the confirmation says was paid as `cost` with `state: "paid"` and `basis: "total"`. Use `"unpaid"` when it is paid later, at the hotel for instance. When several flight legs share one ticket, put the price on the first leg only, so it is counted once.
-- Every card's dates must fall within the trip. A flight home often lands the day after the trip ends. Then ask whether to extend the trip with `update_trip`, and save the leg afterwards. Never drop the arrival to make it fit.
-- Everyone on the trip sees the booking, so save only what the trip needs. Leave out passport and ID numbers, dates of birth, ticket and loyalty numbers, payment details and contact details.
+- Every card's dates must fall within the trip. A flight home often lands the day after the trip ends. Then read `get_trip_decisions`: if the date poll has alternatives, link to `https://awayfolk.app/decisions/<tripId>`, where the owner confirms dates; otherwise ask whether to extend the trip with `update_trip`, and save the leg afterwards. Never drop the arrival to make it fit.
+- Everyone on the trip sees the booking, so save only what the trip needs. Leave out passport and ID numbers, dates of birth, ticket and loyalty numbers, payment details and contact details, in `notes` too.
+- An offer in a travel comparison is research, not a booking; save it as one only when the user shares a confirmation. Deleting a booking card never cancels anything with the supplier.
 - Afterwards, say what was saved: *Your flights and the hotel are in Bookings: New Orleans → Cancún on 26 December, home on 10 January, and Casa Malca for nine nights.*
 
 
