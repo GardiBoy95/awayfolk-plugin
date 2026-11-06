@@ -10,7 +10,7 @@ Find the trip the user names, or use the exact trip ID from their Awayfolk link.
 ## Packing
 
 - Read the packing list in `get_trip` first, then suggest only what is missing. Base it on known trip details and optional styles: actual nights, sourced weather, chosen itinerary and bookings. Styles and unaccepted Ideas are preferences, not confirmed activities. If dates are missing, ask only when a season or duration is needed; a pasted packing list can be saved without dates. Never infer a season or number of nights from missing dates.
-- On a mystery trip, follow `trip.mystery.planner` and never infer hidden plans for a traveller. For a planner, keep items that reveal a surprise on their personal list and use safe, generic wording for shared items. Packing cards do not support `data.secret`; never send that field or expose secret booking or activity details in shared packing notes.
+- On a mystery trip, follow `trip.mystery.planner` and never infer hidden plans for a traveller. Use only that recipient's visible programme, public practical messages and any coarse weather briefing the server actually returns; do not search for weather using a hidden destination. AI connections cannot read the trip's private guest preferences or notes, even for a planner. For a planner, keep items that reveal a surprise on their personal list and use safe, generic wording for shared items. Packing cards do not support `data.secret`; never send that field or expose secret booking or activity details in shared packing notes.
 - Add everything the user accepts in one `add_packing_items` call, up to 100 things.
   - The user's own things are personal, and only they see them.
   - Things the whole group needs once, such as a first-aid kit, go in a separate call with `shared: true`. A thing cannot move between the personal and the shared list later, so choose when you add it.
@@ -18,5 +18,7 @@ Find the trip the user names, or use the exact trip ID from their Awayfolk link.
 
 
 An explicit request to add items already authorizes that addition; do not ask the same question again. A request for suggestions does not authorize saving them all. Use weather only when a current source is available, and distinguish a forecast from seasonal advice. Never expose another traveller's personal items.
+
+If access or the current role changes, stop and reread only what the connection still permits. Do not reconstruct a withdrawn secret from earlier messages or use a new retry key to bypass a refusal. Personal and shared items use separate deduplication scopes; the same title on a personal list does not prove the group already has its shared item. Saving a list does not promise notifications or future forecast delivery.
 
 After adding a list, keep its `eventIds` and returned revision so `undo_change` can undo that batch. If some items changed later and are kept, explain that accurately. Link to the trip's packing page, using the returned URL when available.
